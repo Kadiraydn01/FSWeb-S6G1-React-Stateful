@@ -29043,30 +29043,30 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
 function Input() {
   var _useState = (0, _react.useState)(true),
     _useState2 = _slicedToArray(_useState, 2),
-    inputDeğeri = _useState2[0],
-    setInputDeğeri = _useState2[1];
-  var inputuDeğiştir = function inputuDeğiştir(evt) {
+    inputDegeri = _useState2[0],
+    setInputDegeri = _useState2[1];
+  var inputuDegistir = function inputuDegistir(evt) {
     var value = evt.target.value;
-    setInputDeğeri(value);
+    setInputDegeri(value);
   };
   var reset = function reset() {
-    setInputDeğeri("");
+    setInputDegeri("");
   };
   var stil = {
     fontSize: "1.5em",
     marginBottom: "0.3em",
-    color: inputDeğeri.length > 10 ? "crimson" : "royalblue"
+    color: inputDegeri.length > 10 ? "crimson" : "royalblue"
   };
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "widget-input container"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Input"), /*#__PURE__*/_react.default.createElement("div", {
     id: "output",
     style: stil
-  }, inputDeğeri.toUpperCase()), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+  }, inputDegeri.toString().toUpperCase()), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
     id: "input",
     type: "text",
-    onChange: inputuDeğiştir,
-    value: inputDeğeri
+    onChange: inputuDegistir,
+    value: inputDegeri
   }), /*#__PURE__*/_react.default.createElement("button", {
     id: "resetInput",
     onClick: reset
@@ -29263,10 +29263,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
                                                                       */
 var KareIdListesi = ["sqA", "sqB", "sqC", "sqD"];
 function Kareler() {
-  // State hookunu 2 defa kullanın: 'kareler' ve
-  // 'aktifKare' olmak üzere. Birisi kare idlerini _dizi_ olarak tutacak, diğeri ise aktif olan
-  // kareyi gözlemleyecek. Sayfa yüklendiğinde aktif kare olmayacak,
-  // yani  'aktifKare' null olmalı.
+  // State hooklarını kullanın: 'kareler' ve 'aktifKare'
+  // 'kareler' kare id'lerini tutacak, 'aktifKare' ise şu anda aktif olan kareyi gözlemleyecek.
   var _useState = (0, _react.useState)(KareIdListesi),
     _useState2 = _slicedToArray(_useState, 2),
     kareler = _useState2[0],
@@ -29276,29 +29274,25 @@ function Kareler() {
     aktifKare = _useState4[0],
     setAktifKare = _useState4[1];
   var ClassAdiAl = function ClassAdiAl(id) {
-    // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).(aşağıya bakın)
-    // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek
-    // diğer durumlar için boş döndürecek.
+    // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).
+    // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek.
+    // Diğer durumlar için boş döndürecek.
     // Etkisini görmek için kareye sağ tıklayın ve "öğeyi inceleyin".
     return id === aktifKare ? "active" : "";
   };
   var AktifEt = function AktifEt(id) {
     // Bu bir _satır içinden çağırılmış_ click handler yardımcısıdır.
-    // id bağımsız değişkenini, stateteki aktif id olacak şekilde ayarlayın
-    // eğer zaten aktifse, o zaman önce state i resetlemeliyiz.
+    // id bağımsız değişkenini, stateteki aktif id olacak şekilde ayarlayın.
+    // Eğer zaten aktifse, o zaman önce state'i resetlemeliyiz.
+    setAktifKare(function (ilkAktifKare) {
+      return ilkAktifKare === id ? null : id;
+    });
   };
-  setAktifKare(function (ilkAktifKare) {
-    return ilkAktifKare === id ? null : id;
-  });
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "widget-squares container"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Kareler"), /*#__PURE__*/_react.default.createElement("div", {
     className: "squares"
-  },
-  // Kötü bug!  'KareIdListesi' yerine bir state dilimi kullanmalıyız.
-  // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama kareler bir state diliminden gelmiyorsa,
-  // asla yeni kare ekleyemeyiz, kareleri düzenleyemeyiz ya da silemeyiz. Düzeltin!
-  KareIdListesi.map(function (id) {
+  }, kareler.map(function (id) {
     return /*#__PURE__*/_react.default.createElement("div", {
       id: id,
       key: id,
@@ -29438,7 +29432,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56439" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57405" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

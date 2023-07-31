@@ -36,35 +36,35 @@ ADIM 6:
 import React, { useState } from "react"; /* ADIM 0 */
 
 export default function Input() {
-  const [inputDeğeri, setInputDeğeri] = useState(true);
+  const [inputDegeri, setInputDegeri] = useState(true);
 
-  const inputuDeğiştir = (evt) => {
+  const inputuDegistir = (evt) => {
     const { value } = evt.target;
 
-    setInputDeğeri(value);
+    setInputDegeri(value);
   };
   const reset = () => {
-    setInputDeğeri("");
+    setInputDegeri("");
   };
 
   const stil = {
     fontSize: "1.5em",
     marginBottom: "0.3em",
-    color: inputDeğeri.length > 10 ? "crimson" : "royalblue",
+    color: inputDegeri.length > 10 ? "crimson" : "royalblue",
   };
 
   return (
     <div className="widget-input container">
       <h2>Input</h2>
       <div id="output" style={stil}>
-        {inputDeğeri.toUpperCase()}
+        {inputDegeri.toString().toUpperCase()}
       </div>
       <div>
         <input
           id="input"
           type="text"
-          onChange={inputuDeğiştir}
-          value={inputDeğeri}
+          onChange={inputuDegistir}
+          value={inputDegeri}
         />
         <button id="resetInput" onClick={reset}>
           Reset

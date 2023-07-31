@@ -19,43 +19,38 @@ import React, { useState } from "react";
 const KareIdListesi = ["sqA", "sqB", "sqC", "sqD"];
 
 export default function Kareler() {
-  // State hookunu 2 defa kullanın: 'kareler' ve
-  // 'aktifKare' olmak üzere. Birisi kare idlerini _dizi_ olarak tutacak, diğeri ise aktif olan
-  // kareyi gözlemleyecek. Sayfa yüklendiğinde aktif kare olmayacak,
-  // yani  'aktifKare' null olmalı.
+  // State hooklarını kullanın: 'kareler' ve 'aktifKare'
+  // 'kareler' kare id'lerini tutacak, 'aktifKare' ise şu anda aktif olan kareyi gözlemleyecek.
   const [kareler, setKareler] = useState(KareIdListesi);
   const [aktifKare, setAktifKare] = useState(null);
+
   const ClassAdiAl = (id) => {
-    // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).(aşağıya bakın)
-    // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek
-    // diğer durumlar için boş döndürecek.
+    // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).
+    // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek.
+    // Diğer durumlar için boş döndürecek.
     // Etkisini görmek için kareye sağ tıklayın ve "öğeyi inceleyin".
     return id === aktifKare ? "active" : "";
   };
 
   const AktifEt = (id) => {
     // Bu bir _satır içinden çağırılmış_ click handler yardımcısıdır.
-    // id bağımsız değişkenini, stateteki aktif id olacak şekilde ayarlayın
-    // eğer zaten aktifse, o zaman önce state i resetlemeliyiz.
+    // id bağımsız değişkenini, stateteki aktif id olacak şekilde ayarlayın.
+    // Eğer zaten aktifse, o zaman önce state'i resetlemeliyiz.
+    setAktifKare((ilkAktifKare) => (ilkAktifKare === id ? null : id));
   };
-  setAktifKare((ilkAktifKare) => (ilkAktifKare === id ? null : id));
+
   return (
     <div className="widget-squares container">
       <h2>Kareler</h2>
       <div className="squares">
-        {
-          // Kötü bug!  'KareIdListesi' yerine bir state dilimi kullanmalıyız.
-          // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama kareler bir state diliminden gelmiyorsa,
-          // asla yeni kare ekleyemeyiz, kareleri düzenleyemeyiz ya da silemeyiz. Düzeltin!
-          KareIdListesi.map((id) => (
-            <div
-              id={id}
-              key={id}
-              className={`square ${ClassAdiAl(id)}`}
-              onClick={() => AktifEt(id)}
-            ></div>
-          ))
-        }
+        {kareler.map((id) => (
+          <div
+            id={id}
+            key={id}
+            className={`square ${ClassAdiAl(id)}`}
+            onClick={() => AktifEt(id)}
+          ></div>
+        ))}
       </div>
     </div>
   );
