@@ -28,15 +28,10 @@ export const enIyilerListesi = [
 export default function Programcilar() {
   const [programcilar, setProgramcilar] = useState(enIyilerListesi);
   const [oneCikanId, setOneCikanId] = useState(null);
-  // İki state dilimine ihtiyacımız olduğundan, state hooku iki kez kullanmamız gerekecek..
-  // Bir yanda programcılar listesi, diğer yanda öne çıkan programcının idsi.
 
   const oneCikaninIsmi = () => {
-    // Bunu sona bırakın!
-    // Bu bir event handler değil, yardımcıdır. Kullanımını JSX'te gözlemleyin.
-    // Öne çıkan geliştiricinin _isim_ adını döndürmek için her iki state dilimini kullanacak.
-    // Closureların güzelliği, argümanlar yoluyla bilgi enjekte etmeye gerek kalmadan programın
-    // bu bölgesinden her iki state dilimini de "görebilmemiz"dir.
+    const oneCikanProgramci = programcilar.find((dev) => dev.id === oneCikanId);
+    return oneCikanProgramci ? oneCikanProgramci.isim : "";
   };
 
   const stil = {
