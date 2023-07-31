@@ -35,24 +35,31 @@ ADIM 4:
   "not" için kullandığımız operatörü hatırlıyor musunuz??
 */
 
-import React, { useState } from "react";
+import React, { useState } from "react"; /* ADIM 0 */
+
 export default function Dondurucu() {
-  const [döndürücüAçık, setdöndürücüAcik] = useState(true);
+  /* ADIM 1 */
+  const [dondurucuAcik, setDondurucuAcik] = useState(true);
 
   const toggleDondurucu = () => {
-    setdöndürücüAcik((ilkDondurucuAcik) => !ilkDondurucuAcik);
+    /* ADIM 4 */
+    // "dondurucuAcik" durumunu şu anda olduğunun tersiyle (true ise false, false ise true) değiştirin.
+    setDondurucuAcik((ilkDondurucuAcik) => !ilkDondurucuAcik);
   };
 
   return (
     <div className="widget-spinner container">
       <h2>Döndürücü</h2>
-      {döndürücüAçık && (
-        <div id="döndürücü" className="spinner">
-          --+--
-        </div>
-      )}
+      {
+        // ADIM 2: 'dondurucuAcik' değerine bağlı olarak döndürücünün görünür veya gizli olduğunu belirleyin.
+        dondurucuAcik && (
+          <div id="döndürücü" className="spinner">
+            --+--
+          </div>
+        )
+      }
       <button id="toggleDondurucu" onClick={toggleDondurucu}>
-        {döndürücüAçık ? "Gizle" : "Göster"}
+        {dondurucuAcik ? "Gizle" : "Göster"}
       </button>
     </div>
   );
