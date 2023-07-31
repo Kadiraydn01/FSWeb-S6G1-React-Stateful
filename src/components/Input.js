@@ -36,7 +36,7 @@ ADIM 6:
 import React, { useState } from "react"; /* ADIM 0 */
 
 export default function Input() {
-  const [inputDegeri, setInputDegeri] = useState(true);
+  const [inputDegeri, setInputDegeri] = useState("");
 
   const inputuDegistir = (evt) => {
     const { value } = evt.target;

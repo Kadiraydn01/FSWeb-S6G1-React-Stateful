@@ -70,7 +70,7 @@ export default function Sayac() {
     <div className="widget-counter container">
       <h2>Sayaç</h2>
       <div id="sayici" style={stil}>
-        Sayı {sayici}
+        Sayı {sayici} {sayici % 2 === 0 ? "çift" : "tek"}
       </div>
       <div>
         <button id="artirici" onClick={artirici}>
